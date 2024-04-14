@@ -10,7 +10,7 @@ type Account struct {
 
 type AccountRepository interface {
 	GetAccountById(id string) (*Account, error)
-	Save(t Account) error
+	Save(t *Account) error
 }
 
 func (a *Account) GetBalance() float64 {

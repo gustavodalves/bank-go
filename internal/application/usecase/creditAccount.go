@@ -3,22 +3,22 @@ package usecase
 import "kafka-go-microservice/internal/domain/model"
 
 type CreditAccountUseCase struct {
-	repository model.AccountRepository
+	Repository model.AccountRepository
 }
 
 type CreditAccountDTO struct {
-	accountId string
-	value     float64
+	AccountId string
+	Value     float64
 }
 
 func (uc *CreditAccountUseCase) Execute(dto CreditAccountDTO) error {
-	account, err := uc.repository.GetAccountById(dto.accountId)
+	account, err := uc.Repository.GetAccountById(dto.AccountId)
 	if err != nil {
 		return err
 	}
-	if err = account.Credit(dto.value); err != nil {
+	if err = account.Credit(dto.Value); err != nil {
 		return err
 	}
-	uc.repository.Save(*account)
+	uc.Repository.Save(account)
 	return nil
 }
