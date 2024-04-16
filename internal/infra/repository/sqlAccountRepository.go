@@ -10,7 +10,7 @@ type SqlAccountRepository struct {
 }
 
 func (r *SqlAccountRepository) Save(account *model.Account) error {
-	_, err := r.DB.Exec("INSERT INTO account (holder_name, id) VALUES (?, ?)", account.HolderName, account.Base.ID)
+	_, err := r.DB.Exec("INSERT INTO accounts (holder_name, id) VALUES (?, ?)", account.HolderName, account.Base.ID)
 
 	if err != nil {
 		return err
